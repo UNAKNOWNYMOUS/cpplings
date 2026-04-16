@@ -78,14 +78,14 @@ cpplings/
 │   │   └── 07_templates.md
 │   ├── module_08_stl/
 │   │   └── 08_stl.md
-│   ├── module_09_modern_cpp/
-│   │   └── 09_modern_cpp.md
+│   ├── module_09_move_semantics/
+│   │   └── 09_move.md
 │   ├── module_10_concurrency/
 │   │   └── 10_concurrency.md
-│   ├── module_11_advanced_topics/
-│   │   └── 11_advanced.md
-│   └── module_12_interview_prep/
-│       └── 12_interview_prep.md
+│   ├── module_11_error_handling/
+│   │   └── 11_errors.md
+│   └── module_12_performance/
+│       └── 12_performance.md
 ├── exercises/
 │   └── all_exercises.md
 └── solutions/
