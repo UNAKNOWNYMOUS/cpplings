@@ -107,4 +107,4 @@ cpplings/
 
 ## Let's Begin!
 
-Start with → **[Module 01: Foundations](module_01_foundations/01_foundations.md)**
+Start with → **[Module 01: Foundations](notes/module_01_foundations/01_foundations.md)**
