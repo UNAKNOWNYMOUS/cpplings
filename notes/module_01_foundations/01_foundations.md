@@ -191,7 +191,7 @@ int main() {
 │                                                              │
 │  // math.hpp                      // math.cpp                │
 │  int add(int a, int b);           #include "math.hpp"        │
-│                                   int add(int a, int b) {     │
+│                                   int add(int a, int b) {    │
 │  class Calculator {                   return a + b;          │
 │  public:                          }                          │
 │      int add(int a, int b);                                  │
@@ -320,7 +320,7 @@ int main() {
     // WARNING: Can cause collisions! Avoid in headers!
     using namespace chemistry;
     react();  // OK, but now 'gravity' is ambiguous!
-    
+
     return 0;
 }
 ```
@@ -411,7 +411,7 @@ We'll see this in depth in Module 11. For now: **avoid UB at all costs**.
 
 ---
 
-## 📝 Module 01 — Summary
+## Module 01 — Summary
 
 | Concept | Key Takeaway |
 |---------|-------------|
