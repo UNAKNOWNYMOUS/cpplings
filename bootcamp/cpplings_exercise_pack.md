@@ -1,6 +1,4 @@
-# Cpplings Exercise Pack — Based on Your C++ Mastery Notes
-
-Built from the topics and build suggestions in your uploaded notes, especially the module progression from under-the-hood concepts through templates, STL, move semantics, smart pointers, concurrency, modern C++, UB, and the suggested build projects like `String`, `Vector`, and a thread-safe queue. fileciteturn0file0
+# Cpplings Exercise Pack Notes
 
 ## How to use this pack
 
