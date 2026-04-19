@@ -126,7 +126,6 @@ void process(int x) { global_counter += x; } // definition
 ### ✏️ Exercise 00
 
 **E00.1** — Explain in one sentence what the linker does differently from the compiler.
-**E00.1** Answer: Linker combines the object files + libraries into a single executable. The compiler compiles individual .cpp files into object files.
 
 **E00.2** — Given this code, identify what segment each variable lives in:
 ```cpp
@@ -137,11 +136,6 @@ void foo() {
     int* d = new int; // d lives ?, *d lives ?
 }
 ```
-**E00.2** Answer:
-Data Segment
-BSS Segment
-Stack
-Stack, Heap
 
 **E00.3** — Why does this cause a linker error, not a compiler error?
 ```cpp
@@ -152,7 +146,6 @@ int main() { bar(); }
 // file2.cpp  ← you forgot to compile this file
 void bar() { }      // definition
 ```
-**E00.3** Answer: Compiler doesn't know what to execute, definition is missing.
 
 <details>
 <summary>📋 Answer Key E00</summary>

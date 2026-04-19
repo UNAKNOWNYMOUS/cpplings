@@ -10,48 +10,48 @@ C++ has a small set of **fundamental types** built into the language. All other 
 
 ```
 ┌──────────────────────────────────────────────────────────────────────┐
-│                    C++ FUNDAMENTAL TYPES                              │
-│                                                                        │
-│  BOOLEAN                                                               │
-│  ┌────────────────────────────────────────────────────┐               │
-│  │ bool        │ 1 byte  │ true (1) or false (0)      │               │
-│  └────────────────────────────────────────────────────┘               │
-│                                                                        │
-│  INTEGER TYPES (signed)                                                │
-│  ┌──────────────┬─────────┬────────────────────────────┐              │
-│  │ short        │ 2 bytes │ -32,768 to 32,767           │              │
-│  │ int          │ 4 bytes │ -2,147,483,648 to 2,147...  │              │
-│  │ long         │ 4 or 8  │ Platform dependent          │              │
-│  │ long long    │ 8 bytes │ ±9.2 × 10^18               │              │
-│  └──────────────┴─────────┴────────────────────────────┘              │
-│                                                                        │
-│  INTEGER TYPES (unsigned)                                              │
-│  ┌──────────────┬─────────┬────────────────────────────┐              │
-│  │ unsigned short    │ 2  │ 0 to 65,535                │              │
-│  │ unsigned int      │ 4  │ 0 to 4,294,967,295         │              │
-│  │ unsigned long long│ 8  │ 0 to 18.4 × 10^18          │              │
-│  └──────────────┴─────────┴────────────────────────────┘              │
-│                                                                        │
-│  FLOATING POINT                                                         │
-│  ┌──────────────┬──────────┬───────────────────────────┐              │
-│  │ float        │ 4 bytes  │ ~7 significant digits      │              │
-│  │ double       │ 8 bytes  │ ~15 significant digits     │              │
-│  │ long double  │ 10/16 B  │ ~18-19 significant digits  │              │
-│  └──────────────┴──────────┴───────────────────────────┘              │
-│                                                                        │
-│  CHARACTER TYPES                                                        │
-│  ┌──────────────┬─────────┬────────────────────────────┐              │
-│  │ char         │ 1 byte  │ ASCII character (or byte)  │              │
-│  │ char8_t      │ 1 byte  │ UTF-8 code unit (C++20)    │              │
-│  │ char16_t     │ 2 bytes │ UTF-16 code unit            │              │
-│  │ char32_t     │ 4 bytes │ UTF-32 code unit            │              │
-│  │ wchar_t      │ 2 or 4  │ Wide character (platform)  │              │
-│  └──────────────┴─────────┴────────────────────────────┘              │
-│                                                                        │
-│  VOID                                                                   │
-│  ┌────────────────────────────────────────────────────┐               │
-│  │ void         │ no size │ "nothing" or "any type"   │               │
-│  └────────────────────────────────────────────────────┘               │
+│                    C++ FUNDAMENTAL TYPES                             │
+│                                                                      │
+│  BOOLEAN                                                             │
+│  ┌────────────────────────────────────────────────────┐              │
+│  │ bool        │ 1 byte  │ true (1) or false (0)      │              │
+│  └────────────────────────────────────────────────────┘              │
+│                                                                      │
+│  INTEGER TYPES (signed)                                              │
+│  ┌──────────────┬─────────┬────────────────────────────┐             │
+│  │ short        │ 2 bytes │ -32,768 to 32,767          │             │
+│  │ int          │ 4 bytes │ -2,147,483,648 to 2,147... │             │
+│  │ long         │ 4 or 8  │ Platform dependent         │             │
+│  │ long long    │ 8 bytes │ ±9.2 × 10^18               │             │
+│  └──────────────┴─────────┴────────────────────────────┘             │
+│                                                                      │
+│  INTEGER TYPES (unsigned)                                            │
+│  ┌───────────────────┬────┬────────────────────────────┐             │
+│  │ unsigned short    │ 2  │ 0 to 65,535                │             │
+│  │ unsigned int      │ 4  │ 0 to 4,294,967,295         │             │
+│  │ unsigned long long│ 8  │ 0 to 18.4 × 10^18          │             │
+│  └───────────────────┴────┴────────────────────────────┘             │
+│                                                                      │
+│  FLOATING POINT                                                      │
+│  ┌──────────────┬──────────┬───────────────────────────┐             │
+│  │ float        │ 4 bytes  │ ~7 significant digits     │             │
+│  │ double       │ 8 bytes  │ ~15 significant digits    │             │
+│  │ long double  │ 10/16 B  │ ~18-19 significant digits │             │
+│  └──────────────┴──────────┴───────────────────────────┘             │
+│                                                                      │
+│  CHARACTER TYPES                                                     │
+│  ┌──────────────┬─────────┬────────────────────────────┐             │
+│  │ char         │ 1 byte  │ ASCII character (or byte)  │             │
+│  │ char8_t      │ 1 byte  │ UTF-8 code unit (C++20)    │             │
+│  │ char16_t     │ 2 bytes │ UTF-16 code unit           │             │
+│  │ char32_t     │ 4 bytes │ UTF-32 code unit           │             │
+│  │ wchar_t      │ 2 or 4  │ Wide character (platform)  │             │
+│  └──────────────┴─────────┴────────────────────────────┘             │
+│                                                                      │
+│  VOID                                                                │
+│  ┌────────────────────────────────────────────────────┐              │
+│  │ void         │ no size │ "nothing" or "any type"   │              │
+│  └────────────────────────────────────────────────────┘              │
 └──────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -141,20 +141,20 @@ int z2{3.9};     // ERROR: narrowing conversion from double to int!
 
 ```
 ┌───────────────────────────────────────────────────────────────┐
-│                    MEMORY LAYOUT                               │
-│                                                                │
+│                    MEMORY LAYOUT                              │
+│                                                               │
 │  int x = 42;   (4 bytes, address 0x1000)                      │
-│                                                                │
+│                                                               │
 │  Address:  0x1000  0x1001  0x1002  0x1003                     │
 │           ┌───────┬───────┬───────┬───────┐                   │
 │           │  42   │   0   │   0   │   0   │   (little-endian) │
 │           │0x2A   │0x00   │0x00   │0x00   │                   │
 │           └───────┴───────┴───────┴───────┘                   │
-│                                                                │
+│                                                               │
 │  The integer 42 in binary: 00000000 00000000 00000000 00101010│
 │  In little-endian: least significant byte stored first        │
-│                                                                │
-│  char c = 'A';   (1 byte, ASCII 65 = 0x41)                   │
+│                                                               │
+│  char c = 'A';   (1 byte, ASCII 65 = 0x41)                    │
 │  Address:  0x1004                                             │
 │           ┌───────┐                                           │
 │           │  65   │                                           │
@@ -261,18 +261,18 @@ p2  = &y;   // ERROR: p2 is const
 
 ```
 ┌───────────────────────────────────────────────────────────────┐
-│               CONST POINTER CHEAT SHEET                        │
-│                                                                │
+│               CONST POINTER CHEAT SHEET                       │
+│                                                               │
 │  const int*  p    ←  "p points to something that is const"    │
 │  [pointer can move, pointee cannot change]                    │
-│                                                                │
+│                                                               │
 │  int* const  p    ←  "p itself is const"                      │
 │  [pointer cannot move, pointee can change]                    │
-│                                                                │
-│  const int* const p ← "p is const, points to const"          │
+│                                                               │
+│  const int* const p ← "p is const, points to const"           │
 │  [neither can change]                                         │
-│                                                                │
-│  TRICK: Read declarations RIGHT TO LEFT:                       │
+│                                                               │
+│  TRICK: Read declarations RIGHT TO LEFT:                      │
 │  "int* const p" = "p is a const pointer to int"               │
 │  "const int* p" = "p is a pointer to const int"               │
 └───────────────────────────────────────────────────────────────┘
@@ -396,26 +396,26 @@ Vec<double> doubles;    // Same as std::vector<double>
 This is one of the most important concepts in C++.
 
 ```
-┌───────────────────────────────────────────────────────────────────────┐
+┌────────────────────────────────────────────────────────────────────────┐
 │                    PROCESS MEMORY MAP                                  │
-│                                                                         │
-│  High Addresses                                                         │
+│                                                                        │
+│  High Addresses                                                        │
 │  ┌─────────────────────────────────────────────────────┐               │
-│  │                  KERNEL SPACE                        │               │
-│  │               (OS, not accessible)                   │               │
+│  │                  KERNEL SPACE                       │               │
+│  │               (OS, not accessible)                  │               │
 │  ├─────────────────────────────────────────────────────┤               │
-│  │                    STACK                             │               │
+│  │                    STACK                            │               │
 │  │  - Local variables                                  │               │
 │  │  - Function call frames                             │               │
 │  │  - Grows DOWNWARD (toward lower addresses)          │               │
 │  │  - Fast allocation: just move stack pointer         │               │
 │  │  - Fixed size (usually 1-8 MB)                      │               │
 │  │  - Automatically managed (LIFO cleanup)             │               │
-│  │  ↓↓↓  (grows down)                                 │               │
+│  │  ↓↓↓  (grows down)                                  │               │
 │  │                                                     │               │
 │  │         ~~~~~~~~~~~~~ FREE SPACE ~~~~~~~~~~~~~~     │               │
 │  │                                                     │               │
-│  │  ↑↑↑  (grows up)                                   │               │
+│  │  ↑↑↑  (grows up)                                    │               │
 │  │                    HEAP                             │               │
 │  │  - Dynamic allocations (new / malloc)               │               │
 │  │  - Grows UPWARD (toward higher addresses)           │               │
@@ -423,17 +423,17 @@ This is one of the most important concepts in C++.
 │  │  - Unlimited (constrained by RAM)                   │               │
 │  │  - Manual management (or smart pointers)            │               │
 │  ├─────────────────────────────────────────────────────┤               │
-│  │                    BSS SEGMENT                       │               │
+│  │                    BSS SEGMENT                      │               │
 │  │  (uninitialized global/static variables)            │               │
 │  ├─────────────────────────────────────────────────────┤               │
-│  │                    DATA SEGMENT                      │               │
+│  │                    DATA SEGMENT                     │               │
 │  │  (initialized global/static variables)              │               │
 │  ├─────────────────────────────────────────────────────┤               │
-│  │                    TEXT SEGMENT                      │               │
+│  │                    TEXT SEGMENT                     │               │
 │  │  (machine code, read-only)                          │               │
 │  └─────────────────────────────────────────────────────┘               │
-│  Low Addresses                                                          │
-└───────────────────────────────────────────────────────────────────────┘
+│  Low Addresses                                                         │
+└────────────────────────────────────────────────────────────────────────┘
 ```
 
 ### Stack Variables (Automatic Storage Duration)
@@ -474,17 +474,17 @@ void myFunction() {
 │  STACK FRAME for: int foo(int a, int b)            │
 │                                                    │
 │  ┌──────────────────────────────────────┐          │
-│  │  Return address (where to go after) │ ← rsp+0  │
+│  │  Return address (where to go after)  │ ← rsp+0  │
 │  ├──────────────────────────────────────┤          │
-│  │  Saved rbp (caller's frame pointer) │ ← rsp+8  │
+│  │  Saved rbp (caller's frame pointer)  │ ← rsp+8  │
 │  ├──────────────────────────────────────┤          │
-│  │  Local variable: int x              │ ← rbp-4  │
+│  │  Local variable: int x               │ ← rbp-4  │
 │  ├──────────────────────────────────────┤          │
-│  │  Local variable: int y              │ ← rbp-8  │
+│  │  Local variable: int y               │ ← rbp-8  │
 │  ├──────────────────────────────────────┤          │
-│  │  Parameter: int a                   │ ← rbp+16 │
+│  │  Parameter: int a                    │ ← rbp+16 │
 │  ├──────────────────────────────────────┤          │
-│  │  Parameter: int b                   │ ← rbp+24 │
+│  │  Parameter: int b                    │ ← rbp+24 │
 │  └──────────────────────────────────────┘          │
 └────────────────────────────────────────────────────┘
 ```
@@ -644,7 +644,7 @@ int main() {
 │  int& ref = x;                                           │
 │                                                          │
 │  Memory:                                                 │
-│  Address 0x1000: [  42  ]  ← x (and also ref)           │
+│  Address 0x1000: [  42  ]  ← x (and also ref)            │
 │                                                          │
 │  A reference is typically implemented as a pointer       │
 │  under the hood, but the C++ standard doesn't require    │
