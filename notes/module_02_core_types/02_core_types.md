@@ -679,7 +679,7 @@ for (const auto& [name, score] : scores) {
 
 ---
 
-## 📝 Module 02 — Summary
+## Module 02 — Summary
 
 | Concept | Key Takeaway |
 |---------|-------------|
