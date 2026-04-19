@@ -456,12 +456,12 @@ void myFunction() {
 ```cpp
 void myFunction() {
     int* p = new int(42);   // Allocated on the HEAP
-    
+
     // p (the pointer) is on the stack
     // *p (the int) is on the heap
-    
+
     std::cout << *p << "\n";  // 42
-    
+
     delete p;   // MUST manually free! Otherwise: memory leak
     p = nullptr;  // Good practice: avoid dangling pointer
 }
