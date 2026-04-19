@@ -180,10 +180,10 @@ x ^= 0x0F;// x = x ^ 15
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│           OPERATOR PRECEDENCE TABLE                      │
-│  (Highest to Lowest)                                     │
-│                                                          │
-│  1. ::          Scope resolution                         │
+│           OPERATOR PRECEDENCE TABLE                     │
+│  (Highest to Lowest)                                    │
+│                                                         │
+│  1. ::          Scope resolution                        │
 │  2. () [] . ->  Postfix, function call, member access   │
 │  3. ++ -- ~ !   Prefix, unary (right-to-left)           │
 │  4. * / %       Multiplicative                          │
@@ -700,7 +700,7 @@ void process(T val) {
 
 ---
 
-## 📝 Module 03 — Summary
+## Module 03 — Summary
 
 | Concept | Key Takeaway |
 |---------|-------------|
