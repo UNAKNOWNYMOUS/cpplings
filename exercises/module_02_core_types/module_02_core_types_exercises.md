@@ -15,7 +15,7 @@ Answer each question in the space provided. Try to answer from memory first, the
 ### 1) Fundamental types
 Name the main categories of C++ fundamental types covered in the notes, and give at least one example from each category.
 
-**Your answer:** char, bool, void, int, float, double.
+**Your answer:**
 
 
 
@@ -25,7 +25,7 @@ Name the main categories of C++ fundamental types covered in the notes, and give
 ### 2) `sizeof` and platform dependence
 Which fundamental types in the notes were described as having platform-dependent sizes? Why is that important when writing portable code?
 
-**Your answer:** well all types but specifically long and this is important because of the potential data that can be stored in them.
+**Your answer:**
 
 
 
@@ -35,7 +35,7 @@ Which fundamental types in the notes were described as having platform-dependent
 ### 3) Fixed-width integers
 What is the difference between `int`, `int32_t`, and `int_fast32_t`? When would you prefer each one?
 
-**Your answer:** int is at least 4 bytes, int32_t is exactly 32 bits (4 bytes) and int_fast32_t is the type fastest on that architecture ~ 8 bytes.
+**Your answer:**
 
 
 
@@ -55,11 +55,6 @@ int e = {5};
 Which style is preferred in the notes, and why?
 
 **Your answer:**
-1. asignment
-2. constructor
-3. list initialization
-4. assignment list initalization
-The list initializaiton is performed with possible type checking when downgrading a variable type.
 
 
 
@@ -75,8 +70,6 @@ int z2{3.9};
 ```
 
 **Your answer:**
-1. Is allowed, narrowing.
-2. Not allowed the list initialization will warn you about this.
 
 
 
@@ -90,7 +83,7 @@ If the value `0x12345678` is stored in memory, how would its bytes appear in:
 
 Also explain what “little-endian” means in one sentence.
 
-**Your answer:** little-endian and little-endian stores bits starting from the least significant bit.
+**Your answer:**
 
 
 
@@ -114,13 +107,6 @@ R"(Hello\nWorld)"
 ```
 
 **Your answer:**
-1. int
-2. unsigned int
-3. long long int
-4. float
-5. long double.
-6. hexadecimal
-7. binary
 
 
 
@@ -131,7 +117,6 @@ R"(Hello\nWorld)"
 Explain the difference between `const` and `constexpr`. Give one example where `const` is valid but `constexpr` would not be.
 
 **Your answer:**
-const is saying this value can't change at runtime, constexpr is used for functions where the value may be determined at compile time if the given value is not a variable.
 
 
 
@@ -148,9 +133,6 @@ const int* const p3 = nullptr;
 ```
 
 **Your answer:**
-1. is a pointer to an integer constant
-2. constant pointer to an int
-3. const pointer to a int const
 
 
 
@@ -168,7 +150,6 @@ u -= 1;
 Is this undefined behavior?
 
 **Your answer:**
-No it is not UB it is defined and will underflow to the largest unsigned int value.
 
 
 
@@ -191,14 +172,6 @@ const auto a3 = ci;
 Also explain what the notes mean by saying `auto` “drops const and references by default.”
 
 **Your answer:**
-1. int
-2. double
-3. float
-4. const int
-5. int
-6. const int
-7. const int
-When assigned the auto keyword does not take the trait of const.
 
 
 
@@ -221,11 +194,6 @@ p = nullptr;
 ```
 
 **Your answer:**
-1. stack is faster than heap, stack just needs to move stack pointers and heap needs to to go through free list to find chunk.
-2. idk
-3. local variables and function frames for stacks and dynamic memory for heap.
-4. smaller in size & heap is bigger in size but slower
-5. allocates memory on the heap with the value 42 and then deletes it and then handles the dangling pointer by setting it to nullptr.
 
 
 
@@ -244,11 +212,6 @@ char* bytes = reinterpret_cast<char*>(&n);
 ```
 
 **Your answer:**
-1. long promotion, safe.
-2. double promotion, safe.
-3. narrowing, bad.
-4. barrowing, safe
-5. safe
 
 
 

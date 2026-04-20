@@ -12,77 +12,77 @@ Write your answers in the space provided under each question. Try to answer from
 ## Questions
 
 ### 1. Define C++ using four descriptors from the notes. What do those descriptors mean in practice?
-**Your answer:** General-purpose, statically-typed, systems-levl programming language.
+**Your answer:**
 
 
 
 ---
 
 ### 2. Write the five major stages of the C++ compilation pipeline in order, starting from source code and ending at an executable.
-**Your answer:** preprocessor -> compiler front-end -> compiler back-end -> assembler -> linker.
+**Your answer:**
 
 
 
 ---
 
 ### 3. What does the preprocessor do? Name at least three specific jobs it performs.
-**Your answer:** Replaces the preprocessor directives, expands macros, removes comments.
+**Your answer:**
 
 
 
 ---
 
 ### 4. What is produced after the assembler stage?
-**Your answer:** Object file *.o* files.
+**Your answer:**
 
 
 
 ---
 
 ### 5. What is the job of the linker?
-**Your answer:** Combines object files and resolves symbol references.
+**Your answer:**
 
 
 
 ---
 
 ### 6. Explain the difference between a declaration and a definition. Give one example of each.
-**Your answer:** Declaration--"Hey this thing exists" Definition--"Hey here's how"
+**Your answer:**
 
 
 
 ---
 
 ### 7. What is a translation unit?
-**Your answer:** A translation unit is a file after the processor has done its work on it.
+**Your answer:**
 
 
 
 ---
 
 ### 8. Why can `main.cpp` call a function declared in `math.hpp` even if the function body is in `math.cpp`?
-**Your answer:** Because the compiler goes "Trust me this thing exists" and it will later be checked at link-time.
+**Your answer:**
 
 
 
 ---
 
 ### 9. What is the One-Definition Rule? What kind of error can happen if you violate it?
-**Your answer:** Only define things once, it can cause a redefinition issue with or the compiler doesn't know which one to call because the call is amigous.
+**Your answer:**
 
 
 
 ---
 
 ### 10. Why do include guards or `#pragma once` exist? What problem do they prevent?
-**Your answer:** They prevent multiple inclusion of the same header file and prevent redefintion issues.
+**Your answer:**
 
 
 
 ---
 
 ### 11. In your own words, what problem do namespaces solve?
-**Your answer:** Naming problems with other libraries.
+**Your answer:**
 
 
 
@@ -93,21 +93,21 @@ Write your answers in the space provided under each question. Try to answer from
 - `using physics::force;`
 - `using namespace physics;`
 
-**Your answer:** fully-qualified name, brings only that element into scope, brings all programming elements into scope.
+**Your answer:**
 
 
 
 ---
 
 ### 13. Why is `using namespace std;` especially bad in a header file?
-**Your answer:** Pollutes files and can cause issues with names.
+**Your answer:**
 
 
 
 ---
 
 ### 14. Explain the “as-if” rule in simple words. Why is the compiler allowed to reorder or remove some operations?
-**Your answer:** It can do anything under the software for optimization purposes as long as the semantics stay the same.
+**Your answer:**
 
 
 
@@ -129,10 +129,6 @@ int x = 10 / 2;
 ```
 
 **Your answer:**
-1. Not
-2. Yes signed integer overflow.
-3. yes UB it will crash
-4. Not
 
 
 
