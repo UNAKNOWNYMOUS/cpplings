@@ -1,6 +1,6 @@
 # Module 01: Foundations — How C++ Works Under the Hood
 
-> *"To master a language, you must understand what happens when you press compile."*
+> *"To master a language, you must understand what happens when you compile."*
 
 ---
 
