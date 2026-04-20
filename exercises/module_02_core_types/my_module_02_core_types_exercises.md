@@ -16,11 +16,6 @@ Answer each question in the space provided. Try to answer from memory first, the
 Name the main categories of C++ fundamental types covered in the notes, and give at least one example from each category.
 
 **Your answer:**
-1. boolean
-2. char
-3. int
-4. float
-5. void
 
 
 
@@ -30,7 +25,7 @@ Name the main categories of C++ fundamental types covered in the notes, and give
 ### 2) `sizeof` and platform dependence
 Which fundamental types in the notes were described as having platform-dependent sizes? Why is that important when writing portable code?
 
-**Your answer:** long, long double, and wchar_t and yes this is important when writing portable code because since this is platform-dependent it is likely the code won't act the same on certain platforms - and act incorrectly or error out.
+**Your answer:**
 
 
 
@@ -41,9 +36,6 @@ Which fundamental types in the notes were described as having platform-dependent
 What is the difference between `int`, `int32_t`, and `int_fast32_t`? When would you prefer each one?
 
 **Your answer:**
-1. Its size is really platform-dependent but is typically at least 4 bytes.
-2. This is specially saying the size is 32 bits for the int.
-3. Is a fast int type that is at least 32-bits but may be wider for speed.
 
 
 
@@ -63,16 +55,7 @@ int e = {5};
 Which style is preferred in the notes, and why?
 
 **Your answer:**
-```cpp
-int b = 5; // copy initialization
-int c(5); // direct initialization
-int d{5}; // list/braces initialization
-int e = {5}; // copy-list initialization
-```
-list-initalization is preferred because it:
-1. is safe
-2. checks for narrowing
-3. is uniform across types
+
 
 
 
@@ -87,10 +70,7 @@ int z2{3.9};
 ```
 
 **Your answer:**
-```cpp
-int z1 = 3.9; // it is allowed but lossy
-int z2{3.9}; // not allowed -> ERROR
-```
+
 
 
 
@@ -104,9 +84,7 @@ If the value `0x12345678` is stored in memory, how would its bytes appear in:
 Also explain what “little-endian” means in one sentence.
 
 **Your answer:**
-- little-endian - 78 56 34 12
-- big-endian - 12 34 56 78
-"little-endian" - stores the least significant bit of data starting at the lowest memory address.
+
 
 
 
@@ -129,18 +107,7 @@ R"(Hello\nWorld)"
 ```
 
 **Your answer:**
-```cpp
-42 // int
-42u // unsigned int
-42LL // long long int
-3.14f // float
-3.14L // long double
-0x2A // hexadecimal
-0b00101010 // binary
-'\n' // character
-nullptr // nullptr
-R"(Hello\nWorld)" // raw string
-```
+
 
 
 
@@ -150,13 +117,6 @@ R"(Hello\nWorld)" // raw string
 Explain the difference between `const` and `constexpr`. Give one example where `const` is valid but `constexpr` would not be.
 
 **Your answer:**
-`const` is where the runtime value of a variable cannot change.
-`constexpr` is where the value would be determined a compile-time if possible.
-```cpp
-int a = 7;
-const int b = a;
-constexpr int c = a;
-```
 
 
 
@@ -173,11 +133,7 @@ const int* const p3 = nullptr;
 ```
 
 **Your answer:**
-```cpp
-const int* p1; // pointer to integer constant - pointer can change
-int* const p2 = nullptr; // const pointer to int - int can change
-const int* const p3 = nullptr; // const pointer to int constant - neither
-```
+
 
 
 
@@ -193,7 +149,7 @@ u -= 1;
 
 Is this undefined behavior?
 
-**Your answer:** Not undefined behavior, for unsigned int when underflow it will wrap around in this case to largest unsigned int value.
+**Your answer:**
 
 
 
@@ -216,16 +172,6 @@ const auto a3 = ci;
 Also explain what the notes mean by saying `auto` “drops const and references by default.”
 
 **Your answer:**
-```cpp
-auto x = 42; // int
-auto y = 3.14; // double
-auto z = 3.14f; // float
-const int ci = 42; // const int
-auto a1 = ci; // int
-auto& a2 = ci; // const int&
-const auto a3 = ci; // const int
-```
-`auto` drops the const from variables.
 
 
 
@@ -248,22 +194,9 @@ p = nullptr;
 ```
 
 **Your answer:**
-Stack:
-- speed - fast - stack pointer just has to move
-- lifetime management - automatically managed by compiler
-- typical use - local variables, stack frames, return address, caller stack frame pointer
-- danger/risk - limited in size
-Heap:
-- speed - slower - needs to find block from free-list
-- lifetime management - manual memory management
-- typical use - dynamic memory allocation
-- danger/risk - slow, can cause memory leaks, fragmentation
 
-```cpp
-int* p = new int(42); // allocates int on heap with a value of 42, p is on stack *p is on heap
-delete p; // frees p
-p = nullptr; // handles dangling pointer appropriately
-```
+
+
 
 ---
 
@@ -279,13 +212,7 @@ char* bytes = reinterpret_cast<char*>(&n);
 ```
 
 **Your answer:**
-```cpp
-long l = 42; // good, widening
-double d = 42; // good, widening
-int n = 3.14; // bad, lossy, narrowing
-int m = static_cast<int>(3.14); // more explicit, still lossy
-char* bytes = reinterpret_cast<char*>(&n); // bad, dangerous!
-```
+
 
 
 
@@ -314,21 +241,6 @@ void counter() {
 ```
 
 **Your answer:**
-```cpp
-void example() {
-    int local = 5;
-    {
-        int inner = 3;
-        int local = 99; // this shadows the local outside this block so this one will be used
-    } // inner is destroyed here
-}
-
-void counter() {
-    static int count = 0; // prints increasing value because its lifetime is that of the program and is stored in the DATA segment
-    ++count;
-    std::cout << count << "\n";
-}
-```
 
 
 
@@ -357,22 +269,6 @@ auto [integer, decimal] = p;
 ```
 
 **Your answer:**
-1. Reference is an alias to another variable.
-2. Reference cannot be rebound + needs to be initialized + standard doesn't explicitly say it needs to be initialized.
-3.
-```cpp
-int x = 42;
-int& ref = x;
-int y = 99;
-ref = y; // x is 99
-```
-4.
-4. What do structured bindings do in this example?
-
-```cpp
-std::pair<int, double> p = {42, 3.14};
-auto [integer, decimal] = p; // integer == 42, decimal == 3.14
-```
 
 
 
