@@ -23,31 +23,31 @@ const std::string& get_name(const Person& p, bool full_name = true) {
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                    CALL STACK DIAGRAM                            │
-│                                                                   │
-│  int main() {                                                    │
-│      int r = add(3, 4);  ←── CALL                              │
-│      ...                                                         │
-│  }                                                               │
-│                                                                   │
-│  STACK (grows down):                                             │
-│                                                                   │
-│  Before call:        During call:        After return:           │
+│                    CALL STACK DIAGRAM                           │
+│                                                                 │
+│  int main() {                                                   │
+│      int r = add(3, 4);  ←── CALL                               │
+│      ...                                                        │
+│  }                                                              │
+│                                                                 │
+│  STACK (grows down):                                            │
+│                                                                 │
+│  Before call:        During call:        After return:          │
 │  ┌──────────┐        ┌──────────┐        ┌──────────┐           │
 │  │  main()  │        │  add()   │        │  main()  │           │
 │  │  frame   │        │  a = 3   │        │  frame   │           │
 │  │          │        │  b = 4   │        │  r = 7   │           │
 │  └──────────┘        │  return  │        └──────────┘           │
-│                       │  addr   │                                │
-│                       ├──────────┤                               │
-│                       │  main()  │                               │
-│                       │  frame   │                               │
-│                       └──────────┘                               │
-│                                                                   │
-│  Steps:                                                          │
+│                      │  addr    │                               │
+│                      ├──────────┤                               │
+│                      │  main()  │                               │
+│                      │  frame   │                               │
+│                      └──────────┘                               │
+│                                                                 │
+│  Steps:                                                         │
 │  1. Push arguments (3, 4) onto stack (or put in registers)      │
 │  2. Push return address (next instruction in main)              │
-│  3. Jump to add() entry point                                    │
+│  3. Jump to add() entry point                                   │
 │  4. add() creates its stack frame                               │
 │  5. add() computes, puts result in register (rax/eax)           │
 │  6. add() pops its frame, jumps to return address               │
@@ -63,8 +63,8 @@ This is one of the most important topics in C++.
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
-│              PARAMETER PASSING MODES COMPARISON                      │
-│                                                                       │
+│              PARAMETER PASSING MODES COMPARISON                     │
+│                                                                     │
 │  void by_value    (int x)       — Copy made, original unchanged     │
 │  void by_ref      (int& x)      — No copy, original can change      │
 │  void by_const_ref(const int& x)— No copy, read-only                │
@@ -175,9 +175,9 @@ consume("World");           // String literal is rvalue — works too
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│            PARAMETER PASSING DECISION GUIDE                      │
-│                                                                   │
-│  Type size?          Input only?    Output?    Decision          │
+│            PARAMETER PASSING DECISION GUIDE                     │
+│                                                                 │
+│  Type size?          Input only?    Output?    Decision         │
 │  ─────────────────────────────────────────────────────          │
 │  Small (≤ 8 bytes)   Yes            No         Pass by value    │
 │  Large (> 8 bytes)   Yes            No         const ref        │
@@ -296,16 +296,16 @@ add(1, 2.0);      // Ambiguous! (int+double → no exact match)
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│              OVERLOAD RESOLUTION PRIORITY                        │
+│              OVERLOAD RESOLUTION PRIORITY                       │
 │  (Compiler tries in this order until it finds a match)          │
-│                                                                   │
+│                                                                 │
 │  1. EXACT MATCH: No conversions needed (best!)                  │
-│  2. Trivial conversions: T* → const T*, T[] → T*, etc.         │
+│  2. Trivial conversions: T* → const T*, T[] → T*, etc.          │
 │  3. Numeric promotions: char→int, float→double                  │
 │  4. Standard conversions: int→double, double→int (lossy)        │
 │  5. User-defined conversions (constructor/cast operator)        │
 │  6. Ellipsis (...) match (worst)                                │
-│                                                                   │
+│                                                                 │
 │  If multiple functions match at the same priority → AMBIGUOUS   │
 └─────────────────────────────────────────────────────────────────┘
 ```
