@@ -689,7 +689,7 @@ int result = power(2, n);  // Runtime computation
 
 ---
 
-## 📝 Module 04 — Summary
+## Module 04 — Summary
 
 | Concept | Key Takeaway |
 |---------|-------------|
