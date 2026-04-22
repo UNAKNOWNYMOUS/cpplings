@@ -233,6 +233,10 @@ Compare these loop forms:
 For each one, state when it is most appropriate.
 
 **Your answer:**
+`while` - checks condition first.
+`do-while` - when you want the loop to run at least once.
+`for` - good for when you need 3: initialization, condition, update.
+range-based `for` - good for iterating over containers that have `begin()` and `end()`.
 
 
 
@@ -244,7 +248,7 @@ Explain the difference between `break` and `continue`.
 
 Then answer: if a `break` appears inside an inner loop nested inside an outer loop, which loop does it exit?
 
-**Your answer:**
+**Your answer:** It exists out of the innermost one. `break` exists the inner-most loop and `continue` skips the rest of the current iteration of the loop and skips to the next iteration.
 
 
 
@@ -264,6 +268,12 @@ return x;
 ```
 
 **Your answer:**
+```cpp
+5 + 3 // expression
+x = 10; // expression statement
+if (x > 0) { } // statement
+return x; // statement
+```
 
 
 
@@ -288,8 +298,19 @@ while ((ch = getchar()) != EOF) {
 ```
 
 **Your answer:**
+```cpp
+// getchar() != EOF is evaluated first and then if true ch will be 1 else it will be 0
+while (int ch = getchar() != EOF) {
+    // ...
+}
+```
 
-
+```cpp
+// Yes this is correct because we want ch to get the next character then check if it NE to EOF
+while ((ch = getchar()) != EOF) {
+    // ...
+}
+```
 
 
 ---
@@ -303,7 +324,14 @@ Answer all parts:
 4. When would you use `throw`, `try`, and `catch`?
 
 **Your answer:**
-
+1. What does `if constexpr` do that regular `if` does not?
+It allows for branching at compile time and allows for if statements on different types.
+2. What are `[[likely]]` and `[[unlikely]]` used for?
+It is used for the compiler and let the compiler know that a certain piece of code is more likely to execute and unlikely means the code will very rarely execute. This may or may not help the compiler optimize.
+3. What is the difference between `assert` and `static_assert`?
+`assert` is used for run time analysis and `static_assert` is used for compile time analysis to determine if an expression is true.
+4. When would you use `throw`, `try`, and `catch`?
+When code is very likely to throw an exception.
 
 
 
