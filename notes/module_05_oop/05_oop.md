@@ -87,7 +87,7 @@ int main() {
     acc.deposit(500.0);
     acc.withdraw(200.0);
     acc.print();  // Alice: $1300.00
-    
+
     // acc.balance = 9999;  // ERROR: balance is private!
     return 0;
 }
@@ -99,25 +99,25 @@ int main() {
 
 ```
 ┌──────────────────────────────────────────────────────────────────┐
-│           CLASS OBJECT MEMORY LAYOUT                              │
-│                                                                    │
-│  class BankAccount {                                              │
+│           CLASS OBJECT MEMORY LAYOUT                             │
+│                                                                  │
+│  class BankAccount {                                             │
 │      std::string owner;  // 32 bytes (on typical 64-bit system)  │
 │      double balance;     // 8 bytes                              │
-│  };                                                               │
-│                                                                    │
+│  };                                                              │
+│                                                                  │
 │  sizeof(BankAccount) = 40 bytes (subject to alignment padding)   │
-│                                                                    │
-│  Memory at address 0x2000:                                        │
+│                                                                  │
+│  Memory at address 0x2000:                                       │
 │  ┌──────────────────────────────────────────┐                    │
 │  │  owner (std::string, 32 bytes)           │ 0x2000–0x201F      │
 │  │    [ptr to chars | size | capacity]      │                    │
 │  ├──────────────────────────────────────────┤                    │
 │  │  balance (double, 8 bytes)               │ 0x2020–0x2027      │
 │  └──────────────────────────────────────────┘                    │
-│                                                                    │
-│  MEMBER FUNCTIONS are NOT stored in the object!                   │
-│  They are regular functions in the .text segment.                 │
+│                                                                  │
+│  MEMBER FUNCTIONS are NOT stored in the object!                  │
+│  They are regular functions in the .text segment.                │
 │  The 'this' pointer tells them WHICH object to act on.           │
 └──────────────────────────────────────────────────────────────────┘
 ```
@@ -219,19 +219,19 @@ Every class can have up to **6 special member functions**. Understanding them is
 
 ```
 ┌──────────────────────────────────────────────────────────────────────┐
-│              THE BIG SIX SPECIAL MEMBER FUNCTIONS                     │
-│                                                                        │
-│  1. Default constructor:      T()                                     │
-│  2. Destructor:               ~T()                                    │
-│  3. Copy constructor:         T(const T&)                             │
-│  4. Copy assignment:          T& operator=(const T&)                  │
-│  5. Move constructor:         T(T&&)                     [C++11]      │
-│  6. Move assignment:          T& operator=(T&&)          [C++11]      │
-│                                                                        │
+│              THE BIG SIX SPECIAL MEMBER FUNCTIONS                    │
+│                                                                      │
+│  1. Default constructor:      T()                                    │
+│  2. Destructor:               ~T()                                   │
+│  3. Copy constructor:         T(const T&)                            │
+│  4. Copy assignment:          T& operator=(const T&)                 │
+│  5. Move constructor:         T(T&&)                     [C++11]     │
+│  6. Move assignment:          T& operator=(T&&)          [C++11]     │
+│                                                                      │
 │  If you don't write them, the compiler GENERATES them (if possible)  │
-│                                                                        │
+│                                                                      │
 │  THE RULE OF FIVE (or Zero):                                         │
-│  If you define ANY of 2, 3, 4, 5, or 6 — define ALL of them!        │
+│  If you define ANY of 2, 3, 4, 5, or 6 — define ALL of them!         │
 │  OR: define NONE of them (rule of zero — prefer this!)               │
 └──────────────────────────────────────────────────────────────────────┘
 ```
@@ -270,7 +270,7 @@ public:
     // 4. Copy assignment operator
     MyString& operator=(const MyString& other) {
         if (this == &other) return *this;  // Self-assignment guard!
-        
+
         delete[] data;                     // Free old memory
         length = other.length;
         data = new char[length + 1];
@@ -288,7 +288,7 @@ public:
     // 6. Move assignment operator
     MyString& operator=(MyString&& other) noexcept {
         if (this == &other) return *this;
-        
+
         delete[] data;             // Free current resources
         data = other.data;         // Steal other's resources
         length = other.length;
@@ -306,24 +306,24 @@ public:
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
-│            SHALLOW COPY vs DEEP COPY                                 │
-│                                                                       │
-│  MyString a("Hello");     Heap:  [H|e|l|l|o|\0]                    │
-│                                      ↑                               │
+│            SHALLOW COPY vs DEEP COPY                                │
+│                                                                     │
+│  MyString a("Hello");     Heap:  [H|e|l|l|o|\0]                     │
+│                                      ↑                              │
 │  a.data ─────────────────────────────┘                              │
-│                                                                       │
-│  SHALLOW COPY (BAD):       DEEP COPY (GOOD):                         │
-│  MyString b = a;           MyString b = a;                           │
-│                                                                       │
-│  a.data ──────┐            a.data ───────→ [H|e|l|l|o|\0]          │
-│               ↓                                                       │
-│  [H|e|l|l|o|\0]           b.data ───────→ [H|e|l|l|o|\0] (COPY)   │
-│               ↑                                                       │
-│  b.data ──────┘            Independent! Modifying b doesn't          │
-│                            affect a. Destructors work correctly.     │
-│  PROBLEM: Both a and b                                               │
-│  have the SAME pointer!                                              │
-│  When b destructs: delete[]                                          │
+│                                                                     │
+│  SHALLOW COPY (BAD):       DEEP COPY (GOOD):                        │
+│  MyString b = a;           MyString b = a;                          │
+│                                                                     │
+│  a.data ──────┐            a.data ───────→ [H|e|l|l|o|\0]           │
+│               ↓                                                     │
+│  [H|e|l|l|o|\0]           b.data ───────→ [H|e|l|l|o|\0] (COPY)     │
+│               ↑                                                     │
+│  b.data ──────┘            Independent! Modifying b doesn't         │
+│                            affect a. Destructors work correctly.    │
+│  PROBLEM: Both a and b                                              │
+│  have the SAME pointer!                                             │
+│  When b destructs: delete[]                                         │
 │  When a destructs: delete[] AGAIN → DOUBLE FREE! CRASH!             │
 └─────────────────────────────────────────────────────────────────────┘
 ```
