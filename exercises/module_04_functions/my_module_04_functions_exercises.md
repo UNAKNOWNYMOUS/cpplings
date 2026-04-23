@@ -29,6 +29,11 @@ Include:
 - function body
 
 **Your answer:**
+- return type = `const std::string&`: The type the function returns
+- function name = `get_name`: The name of the function used to call it
+- parameter list = `(const Perosn& p, bool full_name = true)`: The formal parameter list of what information is passed when called
+- default argument = `full_name = true`: Used for when this piece of information is not passed in the actual argument parameter list.
+- function body = `return full_name ? p.full_name : p.first_name;`: Enclosed in `{}` which defines what the function does.
 
 
 
@@ -46,6 +51,7 @@ Include the ideas of:
 - return value
 
 **Your answer:**
+Arguments are pushed onto the stack (which can be stored in registers), return address is pushed onto the stack, jump to entry point of the function, create stack frame for that function, compute result (which can be stored in registers EAX/RAX), stack pops local variables + `add`'s stack frame. Return's back to caller's stack frame and reads result from (EAX/RAX).
 
 
 
@@ -69,6 +75,8 @@ What is the value of `n` afterward, and why?
 Then state when pass-by-value is usually the best choice.
 
 **Your answer:**
+`n` is still 5 because of pass-by-value.
+For small types (<8 bytes) no need to return something and just need a local copy.
 
 
 
@@ -91,6 +99,11 @@ For each one, explain:
 - when the style is appropriate
 
 **Your answer:**
+```cpp
+void f1(int& x); // no copy, yes original can be modified, nullptr not possible, when you want to modify originals
+void f2(const std::string& s); // no copy, yes originals can be modified, nullptr not possible, for large objects that only need to be read-only
+void f3(int* p); // yes copy of the pointer variable, yes originals can be modified, nullptr is possible, when you possibly need to check nullptr, need to change pointers, or working with C code
+```
 
 
 
@@ -107,6 +120,11 @@ For each case below, pick the best passing style and explain why:
 5. A function takes ownership of a temporary `std::string`.
 
 **Your answer:**
+1. pass-by-value
+2. const reference
+3. reference
+4. pointer
+5. move semantics
 
 
 
@@ -128,6 +146,7 @@ What is the problem called, and why does it happen?
 Also state one safe case where returning a reference is fine.
 
 **Your answer:**
+returning reference to a local variable will be UB. It is safe returning a reference it what you are returning outlives the current method/function.
 
 
 
@@ -147,6 +166,7 @@ std::vector<int> make_vector() {
 ```
 
 **Your answer:**
+Compiler will optimize to do it in the caller instead! RVO - Return Value Optimization + NRVO - Named Return Value Optimzation where the compiler instead of pass-by-value it will just construct the function in the caller. So for the function where it returns the object v that is constructing locally in that function and will be passed to the caller via pass-by-value the compiler will construct that in caller instead to prevent creating a temp copy of the object.
 
 
 
@@ -158,7 +178,7 @@ What are two modern ways to return more than one value from a function?
 
 What is `std::optional` used for, and what does `std::nullopt` mean?
 
-**Your answer:**
+**Your answer:** `std::paid`, `std::tuple`, `struct`. `std::optional` - means it is optional that the function returns something of value and `std::nullopt` means the function did not return a value.
 
 
 
@@ -185,6 +205,14 @@ print("Hello", 3, ' ');
 ```
 
 **Your answer:**
+1. In the tail-end because they should be the ones that are omitted the most since you cannot skip arguments you input.
+2. Violates ODR
+3.
+```cpp
+print("Hello"); // "Hello", 1, '\n'
+print("Hello", 3); // "Hello", 3, '\n'
+print("Hello", 3, ' '); // "Hello", 3, ' '
+```
 
 
 
@@ -203,14 +231,15 @@ int add(int a, int b, int c);
 Which overload is called for each of these?
 
 ```cpp
-add(1, 2);
-add(1.0, 2.0);
-add(1, 2, 3);
+add(1, 2); // 1
+add(1.0, 2.0); // 2
+add(1, 2, 3); // 3
 ```
 
 Then explain why `add(1, 2.0)` is problematic.
 
 **Your answer:**
+Ambiguous call
 
 
 
@@ -225,6 +254,9 @@ Answer all parts:
 3. Why are variadic templates preferred over old C-style variadic functions?
 
 **Your answer:**
+1. Allows you to work with multiple types without repeating code.
+2. `inline` is suggestion to the C++ compiler to inline a function and not do all the overhead.
+3. type-safe, compile time check
 
 
 
@@ -249,7 +281,10 @@ Explain each part:
 Then explain why lambdas are useful.
 
 **Your answer:**
-
+1. none
+2. int a, int b
+3. int
+4. return a + b
 
 
 
