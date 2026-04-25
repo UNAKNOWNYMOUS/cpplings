@@ -306,6 +306,7 @@ Explain the difference between capture-by-value and capture-by-reference.
 Then explain what `mutable` does for a lambda that captures by value.
 
 **Your answer:**
+capture-by-value will just copy the variable in the current scope of that function and will not interact with the original one. capture-by-reference will take the originals passed to the lambda and modify them. The `mutable` for a lambda that captures by value will allow modification to that variable in the scope of the lambda allowing changes to happen.
 
 
 
@@ -320,6 +321,7 @@ Compare:
 What can each store? Which is more flexible? Which usually has less overhead?
 
 **Your answer:**
+`std::function` can store: regular functions, lambdas, functors (objects with operator()), member functions. Function pointers store a pointer to a function. `std::function` is more flexible. Function pointers have less overhead.
 
 
 
@@ -336,6 +338,11 @@ Answer all parts:
 5. What is a `constexpr` function, and when can it run at compile time?
 
 **Your answer:**
+1. `noexcept` promises that the function or method will not throw an exception.
+2. The function will terminate the program immediately.
+3. Recursion needs a base case to stop calling itself and allow the unraveling of stack frames.
+4. stack overflow
+5. It can run at compile time if it is given values that are not determined during run-time i.e. at compile time.
 
 
 
