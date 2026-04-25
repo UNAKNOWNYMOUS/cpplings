@@ -418,8 +418,8 @@ NOT OVERLOADABLE (to protect core language semantics):
 
 ```
 ┌──────────────────────────────────────────────────────────────────┐
-│                    INHERITANCE HIERARCHY                          │
-│                                                                    │
+│                    INHERITANCE HIERARCHY                         │
+│                                                                  │
 │                        ┌─────────────┐                           │
 │                        │   Animal    │  ← Base/Parent class      │
 │                        │  +name      │                           │
@@ -427,12 +427,12 @@ NOT OVERLOADABLE (to protect core language semantics):
 │                        │  +eat()     │                           │
 │                        └──────┬──────┘                           │
 │                        ┌──────┴──────┐                           │
-│               ┌────────┴─┐         ┌─┴────────┐                 │
+│               ┌────────┴─┐         ┌─┴────────┐                  │
 │               │   Dog    │         │   Cat    │  ← Derived       │
 │               │  +breed  │         │  +indoor │                  │
 │               │  +fetch()│         │  +purr() │                  │
 │               └──────────┘         └──────────┘                  │
-│                                                                    │
+│                                                                  │
 │  Dog IS-A Animal (inherits name, sound, eat)                     │
 │  Dog HAS additional: breed, fetch()                              │
 └──────────────────────────────────────────────────────────────────┘
@@ -446,7 +446,7 @@ protected:           // Accessible to derived classes (not public)
 
 public:
     Animal(const std::string& n, int a) : name{n}, age{a} {}
-    
+
     virtual ~Animal() {}  // ALWAYS make destructor virtual if using polymorphism!
 
     virtual void speak() const {  // 'virtual': can be overridden
@@ -499,7 +499,7 @@ int main() {
 
     // DYNAMIC BINDING (at runtime): THIS is polymorphism!
     Animal* ptr;
-    
+
     ptr = &dog;
     ptr->speak();  // Calls Dog::speak()! Even through Animal* pointer
 
@@ -526,29 +526,29 @@ int main() {
 
 ```
 ┌──────────────────────────────────────────────────────────────────────┐
-│                    VTABLE MECHANISM                                    │
-│                                                                        │
-│  Each class with virtual functions has a VTABLE (virtual table):      │
+│                    VTABLE MECHANISM                                  │
+│                                                                      │
+│  Each class with virtual functions has a VTABLE (virtual table):     │
 │  An array of function pointers, one per virtual function.            │
-│                                                                        │
+│                                                                      │
 │  Animal vtable:         Dog vtable:          Cat vtable:             │
-│  ┌──────────────┐       ┌──────────────┐     ┌──────────────┐       │
-│  │ Animal::speak│       │ Dog::speak   │     │ Cat::speak   │       │
-│  │ Animal::~dtor│       │ Animal::~dtor│     │ Animal::~dtor│       │
-│  └──────────────┘       └──────────────┘     └──────────────┘       │
-│                                                                        │
+│  ┌──────────────┐       ┌──────────────┐     ┌──────────────┐        │
+│  │ Animal::speak│       │ Dog::speak   │     │ Cat::speak   │        │
+│  │ Animal::~dtor│       │ Animal::~dtor│     │ Animal::~dtor│        │
+│  └──────────────┘       └──────────────┘     └──────────────┘        │
+│                                                                      │
 │  Each OBJECT contains a hidden pointer (vptr) to its class's vtable: │
-│                                                                        │
+│                                                                      │
 │  Dog object (Rex):         Memory layout:                            │
 │  ┌──────────────────┐      ┌────────────┐                            │
 │  │ vptr ────────────┼─────→│ Dog vtable │                            │
 │  │ name = "Rex"     │      └────────────┘                            │
-│  │ age = 3          │                                                 │
-│  │ breed = "Lab"    │                                                 │
-│  └──────────────────┘                                                 │
-│                                                                        │
-│  When you call ptr->speak():                                          │
-│  1. Load vptr from the object                                         │
+│  │ age = 3          │                                                │
+│  │ breed = "Lab"    │                                                │
+│  └──────────────────┘                                                │
+│                                                                      │
+│  When you call ptr->speak():                                         │
+│  1. Load vptr from the object                                        │
 │  2. Look up 'speak' in the vtable                                    │
 │  3. Call the function at that address                                │
 │  This is ONE extra indirection — the cost of virtual dispatch.       │
