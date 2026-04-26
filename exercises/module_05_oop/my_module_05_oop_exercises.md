@@ -68,13 +68,29 @@ public:
 ```
 
 **Your answer:**
+```cpp
+class BankAccount {
+private: // ←  access specifier - private
+    std::string owner; // private
+    double balance; // private
 
+public: // ←  access specifier - public
+    BankAccount(const std::string& name, double initial_balance) // constructor
+        : owner(name), balance(initial_balance) {}
+          // ↑ member initializer list
+
+    void deposit(double amount); // member functions
+    bool withdraw(double amount); // member functions
+    double get_balance() const; // const member functions
+    const std::string& get_owner() const; // const member functions
+};
+```
 
 
 
 ---
 
-### 3\) Encapsulation and private data
+### 3) Encapsulation and private data
 
 Why should `balance` usually be private in a `BankAccount` class instead of public?
 
@@ -84,14 +100,14 @@ Explain what could go wrong if outside code could directly do this:
 acc.balance = -999999;
 ```
 
-**Your answer:**
+**Your answer:** This is because you want to define a well-defined public interface for users to use the class. If it is not private outside code can change it directly which we don't want.
 
 
 
 
 ---
 
-### 4\) Object memory layout and member functions
+### 4) Object memory layout and member functions
 
 For this class:
 
@@ -113,13 +129,17 @@ Answer all parts:
 4. How does a member function know which object to operate on?
 
 **Your answer:**
+1. The data members are stored in each `BankAccount` object.
+2. No they are stored in the .text segment.
+3. .text segment
+4. Member functions know which object to operate on using the `this` pointer.
 
 
 
 
 ---
 
-### 5\) The `this` pointer and method chaining
+### 5) The `this` pointer and method chaining
 
 Explain what `this` means inside a member function.
 
@@ -151,13 +171,14 @@ c.increment().increment().add(10).increment();
 What is `c.get()` afterward?
 
 **Your answer:**
+The `this` keyword refers to the current object calling this. This class supports chaining because the member functions (methods) return a reference to them which allows chaining to happen because after one method is called it will immediately return the reference which will further allow for chaining to occur. `c.get()` will be 13.
 
 
 
 
 ---
 
-### 6\) Member initializer lists
+### 6) Member initializer lists
 
 Explain why the second constructor is preferred:
 
@@ -180,14 +201,14 @@ public:
 
 Also explain when the constructor body runs relative to member initialization.
 
-**Your answer:**
+**Your answer:** The second constructor directly initializes the data members. The first constructor variables are assigned not initialized and for the second constructor they are initialized all first then body runs.
 
 
 
 
 ---
 
-### 7\) Constructor delegation and `explicit`
+### 7) Constructor delegation and `explicit`
 
 Answer all parts:
 
@@ -214,26 +235,37 @@ public:
 ```
 
 **Your answer:**
+1. Constructor delegation is when you delegate the construction of an object to another constructor.
+2. `Server()` eventually delegates it to `Server(std::string h, int p, int t) : host{h}. port{p}, timeout{t}`.
+3. `explicit` prevents implicit conversions.
 
 
 
 
 ---
 
-### 8\) The Big Six and Rule of Five/Zero
+### 8) The Big Six and Rule of Five/Zero
 
 List the Big Six special member functions.
 
 Then explain the Rule of Five and the Rule of Zero.
 
 **Your answer:**
+1. Default Constructor
+2. Destructor
+3. Copy Constructor
+4. Copy Assignment Constructor
+5. Move Constructor
+6. Move Assignment Constructor
+
+The rule of Five states that if you define one of the following constructors define all Five of them or better yet define none of them (rule of zero).
 
 
 
 
 ---
 
-### 9\) Deep copy vs shallow copy
+### 9) Deep copy vs shallow copy
 
 For a class that owns heap memory:
 
@@ -248,14 +280,14 @@ Explain the difference between a shallow copy and a deep copy.
 
 Why can a shallow copy cause a double-free bug?
 
-**Your answer:**
+**Your answer:** Shallow copy is where you copy the address of the heap-allocated object in 2 separate objects. Both point to the same object in memory! Whereas deep copy will construct an independent replica of the object that is being copied. Shallow copy can cause double-free bug because both objects would be pointing at the heap-allocated object and when one object destroys it will free that object on the heap - effectively destroying the object that both objects are pointing to.
 
 
 
 
 ---
 
-### 10\) Move constructor and move assignment
+### 10) Move constructor and move assignment
 
 Explain what the move constructor is doing here:
 
