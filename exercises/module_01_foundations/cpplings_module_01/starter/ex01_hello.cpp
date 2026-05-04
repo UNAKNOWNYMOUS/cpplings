@@ -5,5 +5,4 @@ int main() {
 
   // TODO:
   // Return success to the operating system.
-  return 0;
 }
